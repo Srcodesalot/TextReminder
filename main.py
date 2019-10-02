@@ -5,22 +5,32 @@
 from Reminder import Reminder
 reminders = []
 todaysReminders = []
-phoneBook = []
+phoneBook = {}
 
 def main():
     print("~TEXT REMINDER~\n")
     print("Welcome to the text reminder!")
+    print("To get started please enter your phone number")
+    number = input("Format(xxxxxxxxxx):")
+    try:
+        if phoneBook[number]:
+            print("is user")
+    except:
+        print("looks like you arent registered yet")
+        print("follow th prompts and well get you all setup \n")
+        addUser()
+
     print("To create a reminder please type 'new' ")
     print("To terminate the program please type 'close' ")
     print("for help or information please type 'info")
     command = input(" :")
     while command != "terminate":
-        if command == "close":
+        if command.casefold() == "close":
             termPrompt()
-        elif command == "info":
+        elif command.casefold() == "info":
             # write some definition of the program here along with some commands
             print("test definition")
-        elif command == "new":
+        elif command.casefold() == "new":
             #create a new reminder
             createStore()
         else:
@@ -28,11 +38,12 @@ def main():
         command = input(" :")
 
 def termPrompt():
+    print("")
     print("::WARNING::")
     print("if you choose to exit this will delete all reminders meaning none will be sent")
     print("Are You sure you want to do this yes/no ")
     conformation = input(" :")
-    if conformation == "yes":
+    if conformation.casefold() == "yes":
         exit(0)
     else:
         return
@@ -40,6 +51,8 @@ def termPrompt():
 def createStore ():
     #prompt user to make reminder adding all parameters
     #store reminder in array
+    rem = reminders
+
     print ("TEST")
 
 def dayTimer():
@@ -54,9 +67,11 @@ def textTimer():
 def sendText():
     print("TEXT")
 
-def addNumber():
-    print("adds number")
+def addUser():
+    print("adds user")
+
+def removeRem():
+    print ("remove")
 
 rem = Reminder
-rem.composedMessage(rem)
 main()

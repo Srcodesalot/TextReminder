@@ -12,26 +12,18 @@ class Reminder (object):
     #maybe we will add this however ignore it for now
     Repeatable = False
 
+    def init (title, message, month, day, time):
+        global Title
+        global Message
+        global Month
+        global Day
+        global Time
+        Title = title
+        Message = message
+        Month = month
+        Day = day
+        Time = time
+
     def composedMessage(self):
         composition = self.Title + "\n" + "\n" + self.Message
         print(composition)
-
-    def setTitle(title):
-        global Title
-        Title = title
-
-    def setMessage(message):
-        global Message
-        Message = message
-
-    def setMonth(month):
-        global Month
-        Month = month
-
-    def setDay(day):
-        global Day
-        Day = day
-
-    def setTime(time):
-        global Time
-        Day = Time
