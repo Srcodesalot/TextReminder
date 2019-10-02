@@ -3,11 +3,13 @@
 # Created by Aidan Gutierrez and Josh Graf
 # A "G & G Enterprise" software
 from Reminder import Reminder
+from User import User
 reminders = []
 todaysReminders = []
 phoneBook = {}
-
+user = User
 def main():
+    global user
     print("~TEXT REMINDER~\n")
     print("Welcome to the text reminder!")
     print("To get started please enter your phone number")
@@ -16,10 +18,11 @@ def main():
         if phoneBook[number]:
             print("is user")
     except:
-        print("looks like you arent registered yet")
-        print("follow th prompts and well get you all setup \n")
+        print("looks like you are'nt registered yet")
+        print("follow the prompts and we'll get you all setup \n")
         addUser()
-
+        ##eventually well need saftey mesures to ensure the number is real (probably by length)
+    print("welcome " + user.name)
     print("To create a reminder please type 'new' ")
     print("To terminate the program please type 'close' ")
     print("for help or information please type 'info")
@@ -36,6 +39,7 @@ def main():
         else:
             print ("error")
         command = input(" :")
+    print(user.reminders)
 
 def termPrompt():
     print("")
@@ -51,7 +55,7 @@ def termPrompt():
 def createStore ():
     #prompt user to make reminder adding all parameters
     #store reminder in array
-    rem = reminders
+    rem = Reminder
 
     print ("TEST")
 
@@ -68,7 +72,17 @@ def sendText():
     print("TEXT")
 
 def addUser():
-    print("adds user")
+    global phoneBook
+    global user
+    number = input("please enter your Phone number:")
+    carrier = input("please enter your carrier (ex. T-mobile, AT&T):")
+    name = input("please enter your name:")
+    newUser = User
+    newUser.__init__(newUser,name, number, carrier)
+    user = newUser
+    phoneBook[number] = newUser
+    print("")
+    return
 
 def removeRem():
     print ("remove")

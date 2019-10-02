@@ -4,25 +4,20 @@
 # a "G & G Enterprise" software
 class Reminder (object):
 
-    Title = " "
-    Message = " "
-    Month = 0
-    Day = 00
-    time = 0000
+    title: str
+    message: str
+    month: str
+    day: str
+    time: int
     #maybe we will add this however ignore it for now
     Repeatable = False
 
-    def init (title, message, month, day, time):
-        global Title
-        global Message
-        global Month
-        global Day
-        global Time
-        Title = title
-        Message = message
-        Month = month
-        Day = day
-        Time = time
+    def __init__(self, t, msg, mo, d, tme):
+        self.title = t
+        self.message = msg
+        self.month = mo
+        self.day = d
+        self.time = tme
 
     def composedMessage(self):
         composition = self.Title + "\n" + "\n" + self.Message
